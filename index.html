@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Local Deals & Garage Sales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="/style.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="logo">🧭</span>
+      <h1>Local Deals & Garage Sales</h1>
+    </div>
+    <nav class="actions">
+      <button id="openNew" class="btn">Post a Sale</button>
+      <button id="becomeSponsor" class="btn outline">Business: Become a Sponsor</button>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="panel">
+      <div class="filters card">
+        <h2>Find Sales</h2>
+        <div class="row">
+          <input id="q" type="search" placeholder="Search title / description" />
+        </div>
+        <div class="row grid2">
+          <select id="category">
+            <option value="">All categories</option>
+            <option>Garage Sale</option>
+            <option>Moving Sale</option>
+            <option>Estate Sale</option>
+            <option>Yard Sale</option>
+            <option>Pop-Up Market</option>
+            <option>Store Clearance</option>
+          </select>
+          <input id="date" type="date" />
+        </div>
+        <div class="row">
+          <button id="applyFilters" class="btn">Apply</button>
+          <button id="clearFilters" class="btn ghost">Clear</button>
+        </div>
+      </div>
+
+      <div id="list" class="list"></div>
+    </aside>
+
+    <section class="mapwrap">
+      <div id="map" class="map"></div>
+    </section>
+  </main>
+
+  <!-- New Listing Modal -->
+  <dialog id="newListing">
+    <form id="newListingForm" class="form" method="dialog">
+      <h3>Post a Sale</h3>
+
+      <label>Title
+        <input name="title" required maxlength="80" placeholder="Huge multi-family garage sale" />
+      </label>
+
+      <label>Description
+        <textarea name="description" rows="4" maxlength="600" placeholder="Tools, baby clothes, furniture, antiques…"></textarea>
+      </label>
+
+      <div class="grid2">
+        <label>Category
+          <select name="category" required>
+            <option>Garage Sale</option>
+            <option>Moving Sale</option>
+            <option>Estate Sale</option>
+            <option>Yard Sale</option>
+            <option>Pop-Up Market</option>
+            <option>Store Clearance</option>
+          </select>
+        </label>
+
+        <label>Date
+          <input name="date" type="date" required />
+        </label>
+      </div>
+
+      <div class="grid2">
+        <label>Start time
+          <input name="timeStart" type="time" />
+        </label>
+        <label>End time
+          <input name="timeEnd" type="time" />
+        </label>
+      </div>
+
+      <label>Address (shown on map)
+        <input name="address" placeholder="123 Main St, City, ST" required />
+      </label>
+
+      <label>Contact (optional)
+        <input name="contact" placeholder="email or phone" />
+      </label>
+
+      <label>Photo (optional public URL)
+        <input name="photoUrl" placeholder="https://…" />
+      </label>
+
+      <div class="row between">
+        <div class="muted">Posting is free. Feature your pin for more visibility.</div>
+        <div>
+          <button value="cancel" class="btn ghost">Cancel</button>
+          <button id="saveListing" class="btn">Publish</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="/app.js" type="module"></script>
+  <!-- Replace YOUR_GOOGLE_MAPS_API_KEY -->
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places">
+  </script>
+</body>
+</html>
