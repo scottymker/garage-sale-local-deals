@@ -1,0 +1,13 @@
+{
+  "name": "local-deals-map",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'static site' && exit 0"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^10.0.8",
+    "stripe": "^16.6.0"
+  }
+}
