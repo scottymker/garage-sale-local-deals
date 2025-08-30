@@ -1,0 +1,17 @@
+[build]
+  publish   = "."
+  functions = "netlify/functions"
+
+# Pretty API routes
+[[redirects]]
+  from = "/api/*"
+  to   = "/.netlify/functions/:splat"
+  status = 200
+  force = true
+
+# Webhook (Stripe)
+[[redirects]]
+  from = "/stripe/webhook"
+  to   = "/.netlify/functions/webhook"
+  status = 200
+  force = true
